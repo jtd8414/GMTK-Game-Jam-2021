@@ -16,5 +16,5 @@ repeat(global.player_lives) {
 		c_white,
 		0.5
 	);
-	_x += 64
+	_x += 128
 }

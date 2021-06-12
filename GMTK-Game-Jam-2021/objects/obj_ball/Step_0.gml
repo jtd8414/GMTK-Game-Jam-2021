@@ -1,3 +1,3 @@
-if (!go) {
-	x = obj_block.x;
-}
+//if (!go) {
+//	x = obj_block.x;
+//}
