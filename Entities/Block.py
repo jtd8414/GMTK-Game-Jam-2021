@@ -4,13 +4,16 @@ from enum import Enum
 
 
 class Block(pygame.sprite.Sprite):
-    def __init__(self, color, block_type):
+    def __init__(self, color, block_type, id):
         super(Block, self).__init__()
         self.surf = pygame.Surface((shared_variables.BLOCK_WIDTH, shared_variables.BLOCK_HEIGHT))
         self.surf.fill(color)
         self.rect = self.surf.get_rect()
         self.type = "red"
         self.block_type = block_type
+        self.id = id
+        print(self.id)
+
 
     def setPosition(self, x, y):
         if x is not None:
@@ -26,6 +29,11 @@ class Block(pygame.sprite.Sprite):
             ball.velocity[1] = -ball.velocity[1]
             self.kill()
             blocks.remove(self)
+            for block in blocks:
+                block_to_affect = self.id - shared_variables.ROW_LENGTH
+                if block.id == block_to_affect:
+                    block.kill()
+
             return self.get_points()
         return 0
 

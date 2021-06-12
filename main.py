@@ -26,7 +26,7 @@ def create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blo
     prev_block = None
 
     for i in range(number_of_blocks):
-        block = Block.Block(color, block_type)
+        block = Block.Block(color, block_type, len(blocks))
         if i == 0:
             block.setPosition((shared_variables.SCREEN_WIDTH / 2)
                               - block.rect.width * (number_of_blocks // 2)
@@ -94,12 +94,13 @@ def main():
 
     blocks = []
     distance_between_blocks = 10
-    number_of_blocks = 14
+    shared_variables.ROW_LENGTH = 14
+    shared_variables.COLUMN_LENGTH = 8
     blocks_start_y_pos = shared_variables.SCREEN_HEIGHT / 6
 
     first_block, last_block = create_block_row(blocks,
                                                all_sprites,
-                                               number_of_blocks,
+                                               shared_variables.ROW_LENGTH,
                                                distance_between_blocks,
                                                blocks_start_y_pos,
                                                shared_variables.RED,
@@ -111,13 +112,13 @@ def main():
     leftWall = Wall.Wall(shared_variables.WHITE, shared_variables.SCREEN_WIDTH / 50, shared_variables.SCREEN_HEIGHT, left_wall_x_position, None)
     rightWall = Wall.Wall(shared_variables.WHITE, shared_variables.SCREEN_WIDTH / 50, shared_variables.SCREEN_HEIGHT, right_wall_x_position, None)
 
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.RED, Block.BlockType.LVL_4)
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.ORANGE, Block.BlockType.LVL_3)
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.ORANGE, Block.BlockType.LVL_3)
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.GREEN, Block.BlockType.LVL_2)
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.GREEN, Block.BlockType.LVL_2)
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.YELLOW, Block.BlockType.LVL_1)
-    first_block, last_block = create_block_row(blocks, all_sprites, number_of_blocks, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.YELLOW, Block.BlockType.LVL_1)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.RED, Block.BlockType.LVL_4)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.ORANGE, Block.BlockType.LVL_3)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.ORANGE, Block.BlockType.LVL_3)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.GREEN, Block.BlockType.LVL_2)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.GREEN, Block.BlockType.LVL_2)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.YELLOW, Block.BlockType.LVL_1)
+    first_block, last_block = create_block_row(blocks, all_sprites, shared_variables.ROW_LENGTH, distance_between_blocks, first_block.rect.y + first_block.rect.height + distance_between_blocks, shared_variables.YELLOW, Block.BlockType.LVL_1)
 
     all_sprites.add(leftWall)
     all_sprites.add(rightWall)
@@ -126,7 +127,6 @@ def main():
 
     points = 0
 
-    myfont = pygame.font.SysFont('Comic Sans MS', int(shared_variables.BLOCK_HEIGHT * 5))
     myfont = pygame.font.Font("Fonts\\font.ttf", int(shared_variables.BLOCK_HEIGHT * 5))
 
     running = True

@@ -16,3 +16,6 @@ global GREY
 global PURPLE
 global BLACK
 
+global ROW_LENGTH
+global COLUMN_LENGTH
+
