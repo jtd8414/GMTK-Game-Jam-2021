@@ -1,8 +1,14 @@
 move_bounce_all(true);
 
-global.player_score += 25;
-speed += 0.5
+global.player_score += 2;
+if (speed < global.maxixmum_ball_speed) {
+	speed += 0.5
+}
+audio_play_sound(snd_squish, 10, false);
 instance_destroy(other); 
+var inst = instance_create_depth(other.x, other.y, -100000, obj_splat);
+inst.image_xscale = 0.05;
+inst.image_yscale = 0.05;
 
 if (instance_exists(obj_block2)) 
 {
