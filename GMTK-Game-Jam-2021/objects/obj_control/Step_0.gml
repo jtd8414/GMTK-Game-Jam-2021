@@ -1,4 +1,4 @@
-if(instance_number(obj_block) <= 0) {
+if(instance_number(obj_block) <= 0 && instance_number(obj_block2) <= 0 && instance_number(obj_block3) <= 0 && instance_number(obj_block4) <= 0) {
 	room_restart();
 }
 
